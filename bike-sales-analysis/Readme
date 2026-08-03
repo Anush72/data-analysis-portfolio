@@ -1,6 +1,6 @@
 # Data Analysis Portfolio
 
-A collection of data analysis projects using Excel, SQL, Python, and Power BI — 
+A collection of data analysis projects using Excel, and Power BI — 
 covering data cleaning, analysis, and dashboard design.
 
 ## Projects
@@ -18,22 +18,9 @@ Sales, profit, and COGS analysis across country, state, category, and time.
 - Designed an interactive dashboard with drill-down by country/state, 
   filters for category/sub-category, and trends by year/month
 
-[View project folder →](./bike-sales-analysis)
-
----
-
-### [Next project name]
-Short 1-2 line description of what it does.
-**Tools:** SQL / Python / etc.
-
-[View project folder →](./project-folder-name)
-
----
 
 ## Skills
 - Data cleaning and transformation
-- SQL
-- Python
+- Excel
 - Dimensional modeling (star schema)
 - Power BI dashboards and DAX
-- Machine learning (as added)
