@@ -1,89 +1,95 @@
 # Data Quality Intelligence System — Telco Customer Churn (IBM)
 
-A small end-to-end project exploring how to profile and validate a real-world dataset **before** cleaning it — starting with manual human investigation, then translating those findings into automated checks (Power Query / M), and finally comparing the two.
+A small project exploring how to **understand and validate data before cleaning it**.
 
-## 🎯 Project Goal
+The project starts with human investigation, then turns those findings into automated checks using **Excel Power Query / M**.
 
-Most data cleaning tutorials jump straight to "fill nulls, drop duplicates." This project asks a different question first:
+## 🎯 Goal
 
-> **Is this actually a data quality problem, or is it explainable by the structure of the data?**
+Instead of immediately filling missing values or removing records, I first ask:
 
-Example: 11 missing values in `TotalCharges` looked like a data quality issue at first glance — until cross-checking against `tenure` showed all 11 belonged to brand-new customers with zero tenure. Not an error. Just customers who hadn't been billed yet.
+> **Is this really a data-quality problem, or is there a reason for it?**
 
-## 🗂️ Repository Structure
+For example, `TotalCharges` had 11 missing values. After investigation, all 11 customers had `tenure = 0`. This suggested they were new customers who had not yet been billed.
 
-```
-telco_churn_data_IBM/
-└── Human Investigation/
-    ├── 01_Raw_Data/       # Original, untouched dataset (IBM Telco Customer Churn)
-    ├── Data_Profile/       # Excel dashboard: row/column counts, data types, missing cell summary
-    └── notes/              # Manual investigation log (findings, evidence, interpretation, status)
-```
+## 🔍 Phase 1 — Human Investigation
 
-## 🔍 Phase 1 — Human Investigation (current)
+I manually investigated:
 
-Before writing a single cleaning rule, each column was manually reviewed and logged with:
+* Duplicate Customer IDs
+* Missing values
+* Category consistency
+* Relationships between related columns
+* Logical data patterns
 
-| Field | Purpose |
-|---|---|
-| **Findings** | What was observed |
-| **Evidence** | The data backing the finding |
-| **Interpretation** | Why it happened |
-| **Status** | No issue / Explainable / Needs review |
+### Key Findings
 
-**Checks performed:**
-- Duplicate `CustomerID` values
-- Missing value patterns (and *why* they're missing)
-- Categorical value consistency
-- Logical relationships between dependent columns (e.g. `InternetService` ↔ related service columns, `PhoneService` ↔ `MultipleLines`)
+| Check             | Result                                  |
+| ----------------- | --------------------------------------- |
+| Customer ID       | 7,043 unique customers                  |
+| Total Charges     | 11 missing — explainable by zero tenure |
+| Churn Reason      | Missing for customers who did not churn |
+| Categories        | No inconsistent labels found            |
+| Internet services | Relationships are consistent            |
+| Phone services    | Relationships are consistent            |
 
-**Key findings so far:**
+## 🛠️ Phase 2 — Automated Checks
 
-| Column | Status | Interpretation |
-|---|---|---|
-| Customer ID | No issue | 7,043 unique customers, no duplicates |
-| Total Charges | Explainable | 11 missing values all have 0 tenure — not yet billed |
-| Churn Reason | Explainable | 5,174 missing values correspond to customers who did not churn |
-| Categorical columns | No issue | No inconsistent category labels found |
-| Internet Service ↔ related services | No issue | Customers without internet correctly show "No internet service" for dependent fields |
-| Phone Service ↔ Multiple Lines | No issue | Logic between phone service and line count is consistent |
+The next step is to translate the findings into **Power Query / M**.
 
-## 🛠️ Phase 2 — Automated Data Quality Checks (next)
+The goal is not just to flag an issue, but to provide a reason.
 
-Translate the manual rules above into **Power Query / M** logic that outputs a *reason*, not just a flag — e.g.:
+Example:
 
 ```m
-if [tenure] = 0 and [TotalCharges] = null then "Explainable - new customer"
-else if [TotalCharges] = null then "Needs review"
+if [tenure] = 0 and [TotalCharges] = null
+then "Explainable - new customer"
+else if [TotalCharges] = null
+then "Needs review"
 else "OK"
 ```
 
-Then compare automated results against the manual investigation to check for gaps.
+Current automated profiling includes:
+
+* Data types
+* Missing values
+* Missing %
+* Unique values
+* Minimum
+* Maximum
+* Average
+* Median
 
 ## 📊 Phase 3 — Dashboard
 
-An interactive Excel dashboard (`Data_Profile/`) summarizing:
-- Total rows / columns
-- Column data types (Text, Number, Decimal, Category, Binary)
-- Missing cell distribution by column
-- Pivot table for deeper drill-down
+The Excel dashboard summarizes:
+
+* Total rows and columns
+* Data types
+* Missing values
+* Column-level profiling
+* Pivot-table analysis
 
 ## 🧰 Tools
 
-- Excel (Power Query, Pivot Tables, Dashboard)
-- Power Query / M (planned automation layer)
+* Excel
+* Power Query
+* Power Query / M
+* Pivot Tables
 
 ## 📁 Dataset
 
-[IBM Telco Customer Churn](https://www.kaggle.com/datasets/blastchar/telco-customer-churn) — public dataset, 7,043 rows × 33 columns.
+IBM Telco Customer Churn dataset
+7,043 rows × 33 columns
 
-## 📌 Status
+## 📌 Project Status
 
-- [x] Human investigation & manual profiling
-- [x] Data profiling dashboard (Excel)
-- [ ] Automated Power Query / M data quality rules
-- [ ] Manual vs. automated comparison
-- [ ] Final cleaned dataset + summary report
+* [x] Human investigation
+* [x] Data profiling dashboard
+* [x] Automated profiling
+* [ ] Automated data-quality rules
+* [ ] Manual vs. automated comparison
+* [ ] Final cleaned dataset
+* [ ] Final report
 
----
-*Work in progress — documenting each phase as I go.*
+*Work in progress — learning by investigating, testing, and automating.*
