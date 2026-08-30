@@ -1,0 +1,41 @@
+# Telco Customer Churn Analysis
+
+## Overview
+
+This project analyzes customer churn in a telecommunications
+customer dataset using Power BI.
+
+The objective is to understand customer characteristics,
+churn patterns, customer value, and high-risk customer segments.
+
+## Dashboard Pages
+
+1. Overview
+2. Customer Profile
+3. Churn Analysis
+4. Customer Value
+5. Risk × Value
+6. Findings & Recommendations
+
+## Key Analysis
+
+- Customer churn rate
+- Churn by contract
+- Churn by tenure
+- Churn by customer profile
+- Customer value using CLTV
+- Churn risk segmentation
+- Risk × Value analysis
+
+## Tools
+
+- Power BI
+- Power Query
+- DAX
+- Excel
+- GitHub
+
+## Project Status
+
+Initial dashboard completed.
+Further deep analysis and recommendations will be developed next.
