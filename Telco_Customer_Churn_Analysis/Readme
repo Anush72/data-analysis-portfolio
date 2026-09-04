@@ -1,12 +1,13 @@
+
 # Telco Customer Churn Analysis
 
 ## Overview
 
-This project analyzes customer churn in a telecommunications
-customer dataset using Power BI.
+This project analyzes customer churn in a telecommunications customer dataset using Power BI.
 
-The objective is to understand customer characteristics,
-churn patterns, customer value, and high-risk customer segments.
+The main objective is to understand why customers leave, identify customer groups with higher churn risk, and understand which customers are most valuable to the business.
+
+The analysis looks at customer characteristics, services, contracts, tenure, churn behavior, customer value, and risk.
 
 ## Dashboard Pages
 
@@ -19,13 +20,43 @@ churn patterns, customer value, and high-risk customer segments.
 
 ## Key Analysis
 
-- Customer churn rate
-- Churn by contract
-- Churn by tenure
+- Overall customer churn rate
 - Churn by customer profile
+- Churn by senior citizen status
+- Churn by contract type
+- Churn by tenure
+- Churn by internet service
+- Churn by online security
+- Churn by online backup
+- Churn by device protection
+- Churn by tech support
+- Churn by payment method
 - Customer value using CLTV
-- Churn risk segmentation
+- High-risk customer identification
 - Risk × Value analysis
+
+## Key Findings
+
+- Senior citizens have a higher churn rate than non-senior citizens.
+- Month-to-month customers are more likely to churn than customers with one-year or two-year contracts.
+- Customers with longer tenure generally show lower churn.
+- Customers without additional services such as online security, online backup, device protection, and tech support show higher churn in the groups analyzed.
+- Fiber optic customers contribute significant revenue but also show a higher churn pattern.
+- Electronic check customers show a higher churn pattern compared with some other payment methods.
+- Two-year contract customers contribute the highest revenue among retained customers.
+- High Value and Medium Value customers represent most of the retained customer base.
+- The High Value–High Risk group contains 1,083 customers and contributes approximately $2.81M in revenue.
+- Many customers on month-to-month contracts do not have additional services such as online security, device protection, and tech support.
+
+## Recommendations
+
+- Focus on retaining High Value–High Risk customers first.
+- Encourage month-to-month customers to move to longer-term contracts where appropriate.
+- Consider suitable packages that include online security, online backup, device protection, and tech support.
+- Give additional attention to senior citizen customers who show high churn risk.
+- Monitor fiber optic customers because they contribute significant revenue but also show higher churn.
+- Pay attention to customers using electronic checks because of their higher churn pattern.
+- Keep long-term customers satisfied because they provide more stable revenue.
 
 ## Tools
 
@@ -35,7 +66,21 @@ churn patterns, customer value, and high-risk customer segments.
 - Excel
 - GitHub
 
+## Skills Demonstrated
+
+- Data cleaning and transformation
+- Exploratory data analysis
+- Data visualization
+- Customer segmentation
+- Churn analysis
+- Customer value analysis
+- Risk segmentation
+- Business-focused interpretation
+- Dashboard development
+- Data-driven recommendations
+
 ## Project Status
 
-Initial dashboard completed.
-Further deep analysis and recommendations will be developed next.
+Completed.
+
+The project progressed from data exploration and dashboard development to deeper analysis of customer churn, customer value, risk segmentation, findings, and business recommendations.
