@@ -3,11 +3,20 @@
 
 ## Overview
 
-This project analyzes customer churn in a telecommunications customer dataset using Power BI.
+This project analyzes customer churn in a telecommunications customer dataset using SQL and Power BI.
 
 The main objective is to understand why customers leave, identify customer groups with higher churn risk, and understand which customers are most valuable to the business.
 
 The analysis looks at customer characteristics, services, contracts, tenure, churn behavior, customer value, and risk.
+SQL and Power BI are used to analyze and communicate the same business problem from different perspectives. 
+SQL is used to explore the data and answer business questions, 
+while Power BI is used to visualize the findings and communicate insights.
+
+Analysis Stages
+SQL Business Analysis
+Power BI Dashboard
+Deeper Analysis & Findings
+Future: Python and Machine Learning
 
 ## Dashboard Pages
 
@@ -17,6 +26,29 @@ The analysis looks at customer characteristics, services, contracts, tenure, chu
 4. Customer Value
 5. Risk × Value
 6. Findings & Recommendations
+
+SQL Analysis
+
+The SQL analysis focuses on answering business questions such as:
+
+Total number of customers
+Churned and retained customers
+Customer distribution by internet service
+Churn rate by internet service
+Churn rate by senior citizen status
+Churn rate by partner and dependent status
+Churn rate by gender
+Customer distribution by city
+Churn by location
+Customer distribution by contract type
+Churn rate by contract type
+Common reasons for churn
+High-value and high-risk customer identification
+Total revenue
+Revenue at risk
+Revenue lost from churned customers
+Average monthly charges by internet service
+Churn rate by tenure
 
 ## Key Analysis
 
@@ -59,7 +91,7 @@ The analysis looks at customer characteristics, services, contracts, tenure, chu
 - Keep long-term customers satisfied because they provide more stable revenue.
 
 ## Tools
-
+- SQL/MySQL
 - Power BI
 - Power Query
 - DAX
@@ -81,6 +113,6 @@ The analysis looks at customer characteristics, services, contracts, tenure, chu
 
 ## Project Status
 
-Completed.
+In Progress
 
 The project progressed from data exploration and dashboard development to deeper analysis of customer churn, customer value, risk segmentation, findings, and business recommendations.
