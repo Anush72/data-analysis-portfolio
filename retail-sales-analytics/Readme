@@ -1,0 +1,35 @@
+# Retail Sales Analytics
+
+## Project Overview
+
+This project analyzes retail sales data to identify sales,
+profitability, product, customer, and regional performance.
+
+## Tools
+
+- Power BI
+- Power Query
+- SQL
+- Excel
+
+## Current Progress
+
+- Dataset understanding
+- Data profiling
+- Data cleaning
+- Dimensional data modeling
+- Fact and dimension tables
+- Power BI relationships
+
+## Data Model
+
+The project uses a star schema consisting of:
+
+- Fact_Orders
+- DimProduct
+- DimLocation
+- Calendar
+
+## Project Status
+
+In Progress
