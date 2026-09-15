@@ -5,21 +5,16 @@
 This project analyzes retail sales data to identify sales,
 profitability, product, customer, and regional performance.
 
+The goal is to answer business questions using SQL, Power Query,
+Excel, and Power BI and turn the analysis into meaningful
+business insights.
+
 ## Tools
 
-- Power BI
+- SQL Server (SSMS)
 - Power Query
-- SQL
+- Power BI
 - Excel
-
-## Current Progress
-
-- Dataset understanding
-- Data profiling
-- Data cleaning
-- Dimensional data modeling
-- Fact and dimension tables
-- Power BI relationships
 
 ## Data Model
 
@@ -28,7 +23,57 @@ The project uses a star schema consisting of:
 - Fact_Orders
 - DimProduct
 - DimLocation
-- Calendar
+- DimDate
+
+## Business Questions
+
+### Sales Performance Over Time
+
+1. How do Sales, Profit, and Number of Orders change over time by year?
+2. How do Sales, Profit, and Number of Orders change over time by month?
+3. What is the worst-performing sales month for each year?
+4. What is the best-performing sales month for each year?
+
+## Initial Findings
+
+- Sales, Profit, and Number of Orders increased over the years.
+- Monthly analysis was performed to understand sales performance
+  throughout the year.
+- February was identified as the worst-performing sales month
+  across the years analyzed.
+- December was identified as the best-performing sales month
+  across the years analyzed.
+
+## SQL Analysis
+
+The time-based analysis included:
+
+- Aggregating Sales, Profit, and Quantity by Year and Month
+- Counting distinct orders using `COUNT(DISTINCT Order_ID)`
+- Joining `Fact_Orders` with `DimDate`
+- Calculating Profit Margin
+- Using `RANK()` with `PARTITION BY` to identify best and worst months
+- Using CTEs to filter ranked results
+
+## Current Progress
+
+- [x] Dataset understanding
+- [x] Data profiling
+- [x] Data cleaning
+- [x] Dimensional data modeling
+- [x] Fact and dimension tables
+- [x] Power BI relationships
+- [x] Calendar/DimDate table
+- [x] Sales performance analysis
+- [x] Monthly sales analysis
+- [x] Best and worst month analysis
+- [ ] Customer Segment analysis
+- [ ] Product analysis
+- [ ] Category analysis
+- [ ] Sub-Category analysis
+- [ ] Country analysis
+- [ ] Power BI dashboard
+- [ ] Final insights and recommendations
 
 ## Project Status
 
