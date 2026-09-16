@@ -53,3 +53,36 @@ group by d.Month_Name,d.Year
 select * from MonthlySales
 where ranked = 1
 order by Year;
+
+-- Total Sales, Total Orders and Profit Margin Based on Customer Segement
+select segment,sum(quantity) as Total_Quantity, 
+sum(sales) as Total_Sales,
+sum(profit) as Total_Profit,
+sum(profit)/sum(sales) * 100 as Profit_Margin
+from FactOrders
+Group by segment;
+
+
+-- Total Sales, Total Orders and Profit Margin Based on Customer Segement Per Year
+select Year,segment,sum(quantity) as Total_Quantity, 
+sum(sales) as Total_Sales,
+sum(profit) as Total_Profit,
+sum(profit)/sum(sales) * 100 as Profit_Margin
+from FactOrders f
+join DimDate d
+on f.order_date = d.FullDate
+Group by segment,Year
+Order by segment,Year;
+
+-- Discount Over the Years
+select Year,segment,sum(quantity) as Total_Quantity, 
+sum(sales) as Total_Sales,
+sum(profit) as Total_Profit,
+avg(discount) as average_discount,
+sum(profit)/sum(sales) * 100 as Profit_Margin
+from FactOrders f
+join DimDate d
+on f.order_date = d.FullDate
+Group by segment,Year
+Order by segment,Year;
+
