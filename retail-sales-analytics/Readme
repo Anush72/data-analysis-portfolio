@@ -43,6 +43,10 @@ The project uses a star schema consisting of:
   across the years analyzed.
 - December was identified as the best-performing sales month
   across the years analyzed.
+- Completed Customer Segment analysis using SQL, comparing Sales, Profit, 
+  Orders, Quantity, Average Discount, and Profit Margin over time.
+- Found that Corporate Profit Margin declined over time despite increases 
+  in Sales, Quantity, and Profit.
 
 ## SQL Analysis
 
