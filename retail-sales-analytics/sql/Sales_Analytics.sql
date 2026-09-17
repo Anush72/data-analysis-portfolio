@@ -86,3 +86,36 @@ on f.order_date = d.FullDate
 Group by segment,Year
 Order by segment,Year;
 
+
+-- which category,subcategory contributes most to decline
+select Year,category,sub_category,sum(quantity) as Total_Quantity, 
+sum(sales) as Total_Sales,
+sum(profit) as Total_Profit,
+avg(discount) as average_discount,
+sum(profit)/sum(sales) * 100 as Profit_Margin
+from FactOrders f
+join DimDate d
+on f.order_date = d.FullDate
+join  DimProduct p
+on f.product_id = p.product_id
+where segment = 'Corporate'
+Group by category,sub_category,Year
+Order by category,sub_category,Year;
+
+-- Machine in Technology profit decreasing inspite the sales increasing going down to product level
+select Year,category,sub_category,product_name,sum(quantity) as Total_Quantity, 
+sum(sales) as Total_Sales,
+sum(profit) as Total_Profit,
+avg(discount) as average_discount,
+sum(profit)/sum(sales) * 100 as Profit_Margin
+from FactOrders f
+join DimDate d
+on f.order_date = d.FullDate
+join  DimProduct p
+on f.product_id = p.product_id
+where segment = 'Corporate' and (category = 'Technology' and sub_category = 'Machines') and Year in (2014)
+Group by category,sub_category,product_name,Year
+Having sum(profit)/sum(sales) * 100 < 0
+Order by category,sub_category,product_name,Year;
+
+
