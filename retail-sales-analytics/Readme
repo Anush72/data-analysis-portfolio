@@ -47,6 +47,9 @@ The project uses a star schema consisting of:
   Orders, Quantity, Average Discount, and Profit Margin over time.
 - Found that Corporate Profit Margin declined over time despite increases 
   in Sales, Quantity, and Profit.
+- Found that Corporate profit margin declined over time despite increases in sales and quantity.
+  Drilled down from Category → Sub-Category → Product and found a sharp decline in Machine profitability in 2014, 
+  with several products generating negative profit.
 
 ## SQL Analysis
 
