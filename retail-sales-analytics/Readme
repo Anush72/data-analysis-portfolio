@@ -2,12 +2,11 @@
 
 ## Project Overview
 
-This project analyzes retail sales data to identify sales,
-profitability, product, customer, and regional performance.
+This project analyzes retail sales data to understand sales,
+profitability, customer segments, product performance, and trends over time.
 
 The goal is to answer business questions using SQL, Power Query,
-Excel, and Power BI and turn the analysis into meaningful
-business insights.
+Excel, and Power BI and turn the analysis into meaningful business insights.
 
 ## Tools
 
@@ -34,33 +33,70 @@ The project uses a star schema consisting of:
 3. What is the worst-performing sales month for each year?
 4. What is the best-performing sales month for each year?
 
+### Customer Segment Analysis
+
+5. Which customer segment generates the highest Sales, Profit, and Orders?
+6. How does Profit Margin change across customer segments over time?
+7. Are Sales and Profit increasing at the same rate as Profit Margin?
+
+### Category & Sub-Category Analysis
+
+8. Which category generates the highest Sales, Profit, and Quantity?
+9. Which sub-categories drive Sales, Profit, and Quantity within each category?
+10. Which products or sub-categories show profitability issues?
+
 ## Initial Findings
 
+### Sales Performance
+
 - Sales, Profit, and Number of Orders increased over the years.
-- Monthly analysis was performed to understand sales performance
-  throughout the year.
-- February was identified as the worst-performing sales month
-  across the years analyzed.
-- December was identified as the best-performing sales month
-  across the years analyzed.
-- Completed Customer Segment analysis using SQL, comparing Sales, Profit, 
-  Orders, Quantity, Average Discount, and Profit Margin over time.
-- Found that Corporate Profit Margin declined over time despite increases 
-  in Sales, Quantity, and Profit.
-- Found that Corporate profit margin declined over time despite increases in sales and quantity.
-  Drilled down from Category → Sub-Category → Product and found a sharp decline in Machine profitability in 2014, 
-  with several products generating negative profit.
+- Monthly analysis was performed to understand sales performance throughout the year.
+- February was identified as the worst-performing sales month across the years analyzed.
+- December was identified as the best-performing sales month across the years analyzed.
+
+### Customer Segment
+
+- Consumer generated the highest overall Sales, Profit, and Orders.
+- Corporate Sales, Quantity, and Profit increased over time, but its Profit Margin declined.
+- Corporate profitability was investigated further through Category → Sub-Category → Product analysis.
+- Corporate Technology → Machines showed a sharp decline in Profit Margin in 2014 despite increases in Sales and Quantity.
+- Several Machine products generated negative profit margins in 2014.
+
+### Category Performance
+
+- Technology generated the highest Sales and Profit.
+- Office Supplies had the highest Quantity.
+- The category with the highest sales volume was not necessarily the category with the highest financial performance.
+
+### Sub-Category Performance
+
+**Office Supplies**
+- Storage had the highest Sales.
+- Appliances generated the highest Profit.
+- Binders had the highest Quantity.
+
+**Technology**
+- Phones had the highest Sales and Quantity.
+- Accessories generated the highest Profit.
+
+**Furniture**
+- Chairs had the highest Quantity.
+- Bookcases generated the highest Profit.
+- Tables generated approximately $757K in Sales but a loss of approximately $64K.
+- Tables remained unprofitable despite increasing Sales and Quantity over time.
 
 ## SQL Analysis
 
-The time-based analysis included:
+The analysis includes:
 
-- Aggregating Sales, Profit, and Quantity by Year and Month
+- Aggregating Sales, Profit, Quantity, and Orders by Year and Month
 - Counting distinct orders using `COUNT(DISTINCT Order_ID)`
 - Joining `Fact_Orders` with `DimDate`
+- Joining fact and dimension tables for drill-down analysis
 - Calculating Profit Margin
-- Using `RANK()` with `PARTITION BY` to identify best and worst months
+- Using `RANK()` with `PARTITION BY`
 - Using CTEs to filter ranked results
+- Comparing performance across Customer Segments, Categories, and Sub-Categories
 
 ## Current Progress
 
@@ -74,14 +110,14 @@ The time-based analysis included:
 - [x] Sales performance analysis
 - [x] Monthly sales analysis
 - [x] Best and worst month analysis
-- [ ] Customer Segment analysis
-- [ ] Product analysis
-- [ ] Category analysis
-- [ ] Sub-Category analysis
-- [ ] Country analysis
+- [x] Customer Segment analysis
+- [x] Category analysis
+- [x] Sub-Category analysis
+- [x] Product-level profitability investigation
+- [ ] Country/Regional analysis
 - [ ] Power BI dashboard
 - [ ] Final insights and recommendations
 
 ## Project Status
 
-In Progress
+**In Progress**
