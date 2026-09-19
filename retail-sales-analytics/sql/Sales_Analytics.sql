@@ -119,3 +119,55 @@ Having sum(profit)/sum(sales) * 100 < 0
 Order by category,sub_category,product_name,Year;
 
 
+-- Which category has highest sale,order and profit
+
+select category,sum(sales) as Total_Sales,sum(quantity) as Total_Quantity,sum(profit) as Total_Profit
+from FactOrders f
+join DimProduct p
+on f.product_id = p.product_id
+Group by category;
+
+-- Drill to office supplies 
+select category,sub_category,sum(sales) as Total_Sales,sum(quantity) as Total_Quantity,sum(profit) as Total_Profit
+from FactOrders f
+join DimProduct p
+on f.product_id = p.product_id
+Group by sub_category,category
+Having category = 'Office Supplies'
+order by Total_Sales DESC;
+
+-- Drill down to Technology
+select category,sub_category,sum(sales) as Total_Sales,sum(quantity) as Total_Quantity,sum(profit) as Total_Profit
+from FactOrders f
+join DimProduct p
+on f.product_id = p.product_id
+Group by sub_category,category
+Having category = 'Technology'
+order by Total_Sales DESC;
+
+-- Drill down to Furniture
+select category,sub_category,sum(sales) as Total_Sales,
+sum(quantity) as Total_Quantity,
+sum(profit) as Total_Profit,
+avg(discount) as average_discount
+from FactOrders f
+join DimProduct p
+on f.product_id = p.product_id
+Group by sub_category,category
+Having category = 'Furniture'
+order by Total_Sales DESC;
+
+-- Looking at Different Year of Tables
+select category,sub_category,sum(sales) as Total_Sales,
+sum(quantity) as Total_Quantity,
+sum(profit) as Total_Profit,
+avg(discount) as average_discount,Year
+from FactOrders f
+join DimProduct p
+on f.product_id = p.product_id
+join DimDate D
+on f.order_date = d.FullDate
+Group by Year,sub_category,category
+Having category = 'Furniture' and sub_category = 'Tables'
+order by Year;
+
