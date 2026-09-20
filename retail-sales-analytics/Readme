@@ -3,7 +3,8 @@
 ## Project Overview
 
 This project analyzes retail sales data to understand sales,
-profitability, customer segments, product performance, and trends over time.
+profitability, customer segments, product performance, regional
+performance, and trends over time.
 
 The goal is to answer business questions using SQL, Power Query,
 Excel, and Power BI and turn the analysis into meaningful business insights.
@@ -45,6 +46,14 @@ The project uses a star schema consisting of:
 9. Which sub-categories drive Sales, Profit, and Quantity within each category?
 10. Which products or sub-categories show profitability issues?
 
+### Regional Analysis
+
+11. Which region generates the highest Sales, Profit, and Quantity?
+12. Which countries contribute most to regional performance?
+13. Which categories and sub-categories are driving demand within a country?
+14. Does high demand necessarily result in higher Sales and Profit?
+15. Which products are driving the performance of high-performing sub-categories?
+
 ## Initial Findings
 
 ### Sales Performance
@@ -85,6 +94,18 @@ The project uses a star schema consisting of:
 - Tables generated approximately $757K in Sales but a loss of approximately $64K.
 - Tables remained unprofitable despite increasing Sales and Quantity over time.
 
+### Regional & Country Analysis
+
+- North generated the highest overall Sales, Quantity, and Profit among the regions analyzed.
+- Within North, the United Kingdom and Mexico were major contributors to Sales and Profit.
+- In the United Kingdom, Technology generated high Profit despite relatively low Quantity.
+- Within UK Technology, Copiers generated the highest Profit with relatively low Quantity and the lowest Average Discount among the Technology sub-categories.
+- In Mexico, Office Supplies had the highest Quantity, while Technology generated the highest Sales and Profit.
+- Within Mexico Office Supplies, Binders had the highest Quantity, while Appliances generated the highest Sales and Profit despite much lower Quantity.
+- Appliances generated approximately $168 Sales per Unit compared with approximately $12 for Binders.
+- No recorded discount was observed across the Mexico Office Supplies sub-categories in this analysis.
+- Product-level analysis was performed on 25 Appliance products in Mexico to investigate the drivers of performance.
+
 ## SQL Analysis
 
 The analysis includes:
@@ -94,9 +115,12 @@ The analysis includes:
 - Joining `Fact_Orders` with `DimDate`
 - Joining fact and dimension tables for drill-down analysis
 - Calculating Profit Margin
+- Calculating Sales per Unit
 - Using `RANK()` with `PARTITION BY`
-- Using CTEs to filter ranked results
-- Comparing performance across Customer Segments, Categories, and Sub-Categories
+- Using multiple ranking calculations to compare Quantity and Profit
+- Using CTEs to filter and analyze intermediate results
+- Comparing performance across Customer Segments, Categories, Sub-Categories, Countries, and Regions
+- Drilling down from Region → Country → Category → Sub-Category → Product
 
 ## Current Progress
 
@@ -114,7 +138,9 @@ The analysis includes:
 - [x] Category analysis
 - [x] Sub-Category analysis
 - [x] Product-level profitability investigation
-- [ ] Country/Regional analysis
+- [x] Regional analysis
+- [x] Country-level analysis
+- [x] Country → Category → Sub-Category drill-down
 - [ ] Power BI dashboard
 - [ ] Final insights and recommendations
 
