@@ -171,3 +171,109 @@ Group by Year,sub_category,category
 Having category = 'Furniture' and sub_category = 'Tables'
 order by Year;
 
+
+-- Looking at Region, looking sales, quantity
+select region,
+sum(quantity) as Total_Quantity,
+sum(sales) as Total_Sales,
+sum(profit) as Total_Profit
+from DimLocation l
+join FactOrders f
+on l.LocationKey  = f.LocationKey
+group by region
+;
+
+-- Looking at country of North
+select region,country,
+sum(quantity) as Total_Quantity,
+sum(sales) as Total_Sales,
+sum(profit) as Total_Profit
+from DimLocation l
+join FactOrders f
+on l.LocationKey  = f.LocationKey
+group by region,country
+having region = 'North'
+;
+
+-- Looking at United Kingdom Category 
+select region,country,category,
+sum(quantity) as Total_Quantity,
+sum(sales) as Total_Sales,
+sum(profit) as Total_Profit
+from DimLocation l
+join FactOrders f
+on l.LocationKey  = f.LocationKey
+join DimProduct p
+on f.product_id = p.product_id
+group by region,country,category
+having country = 'United Kingdom'
+;
+
+-- which subcategory generates most in United Kingdom in Technology
+select region,country,category,sub_category,
+sum(quantity) as Total_Quantity,
+sum(sales) as Total_Sales,
+sum(profit) as Total_Profit,
+avg(discount) as AvgDiscount
+from DimLocation l
+join FactOrders f
+on l.LocationKey  = f.LocationKey
+join DimProduct p
+on f.product_id = p.product_id
+group by region,country,category,sub_category
+having  country = 'United Kingdom' and category = 'Technology'
+;
+
+-- Looking at mexico
+select region,country,category,
+sum(quantity) as Total_Quantity,
+sum(sales) as Total_Sales,
+sum(profit) as Total_Profit
+from DimLocation l
+join FactOrders f
+on l.LocationKey  = f.LocationKey
+join DimProduct p
+on f.product_id = p.product_id
+group by region,country,category
+having country = 'Mexico'
+;
+
+-- which sub category is driving demand in office supplies
+select country,category,sub_category,
+sum(quantity) as Total_Quantity,
+sum(sales) as Total_Sales,
+sum(profit) as Total_Profit,
+rank()over( order by sum(quantity) desc) as Quantity_Ranked,
+rank()over( order by sum(profit) desc) as Most_Profit,
+sum(sales)/sum(quantity) as Sales_Per_Unit,
+avg(discount) as average_discount
+from DimLocation l
+join FactOrders f
+on l.LocationKey  = f.LocationKey
+join DimProduct p
+on f.product_id = p.product_id
+group by country,category,sub_category
+having country = 'Mexico' and category = 'Office Supplies';
+
+-- looking at Product Name in Sub_Category Appliances
+with mexico_office_appliances
+as (
+select country,sub_category,product_name,
+sum(quantity) as Total_Quantity,
+sum(sales) as Total_Sales,
+sum(profit) as Total_Profit,
+rank()over( order by sum(sales) desc) as Quantity_Ranked,
+rank()over( order by sum(profit) desc) as Most_Profit,
+sum(sales)/sum(quantity) as Sales_Per_Unit,
+avg(discount) as average_discount
+from DimLocation l
+join FactOrders f
+on l.LocationKey  = f.LocationKey
+join DimProduct p
+on f.product_id = p.product_id
+group by country,sub_category,product_name
+having country = 'Mexico' and sub_category = 'Appliances'
+)
+select * 
+from mexico_office_appliances
+where Sales_Per_Unit > 168;
