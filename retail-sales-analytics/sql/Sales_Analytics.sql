@@ -276,4 +276,35 @@ having country = 'Mexico' and sub_category = 'Appliances'
 )
 select * 
 from mexico_office_appliances
-where Sales_Per_Unit > 168;
+where Sales_Per_Unit > 168
+order by Total_Profit DESC;
+
+
+-- Are a small number of Appliances products responsible for most of Mexico's Profit
+select sum(Total_Profit) as Total_Profit_of_5
+from
+	(select p.product_name,l.country,p.sub_category,sum(profit) as Total_Profit
+	from FactOrders o
+	join DimProduct p
+	on o.product_id = p.product_id
+	join DimLocation l
+	on l.LocationKey = o.LocationKey
+	group by p.product_name,p.sub_category,l.country
+	Having country = 'Mexico' and sub_category = 'Appliances'
+) a
+where Total_Profit >=888
+;
+
+select sum(Total_Profit) as Total_Profit_of_5
+from
+	(select p.product_name,l.country,p.sub_category,sum(profit) as Total_Profit
+	from FactOrders o
+	join DimProduct p
+	on o.product_id = p.product_id
+	join DimLocation l
+	on l.LocationKey = o.LocationKey
+	group by p.product_name,p.sub_category,l.country
+	Having country = 'Mexico' and sub_category = 'Appliances'
+) a
+where Total_Profit <=888
+;
