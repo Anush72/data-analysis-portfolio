@@ -122,6 +122,9 @@ The analysis includes:
 - Comparing performance across Customer Segments, Categories, Sub-Categories, Countries, and Regions
 - Drilling down from Region → Country → Category → Sub-Category → Product
 
+## Power BI Dashboard
+- Overview of Sales,Profit,and Quantity by year, category and region
+
 ## Current Progress
 
 - [x] Dataset understanding
