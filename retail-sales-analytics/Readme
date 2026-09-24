@@ -29,14 +29,14 @@ The project uses a star schema consisting of:
 
 ### Sales Performance Over Time
 
-1. How do Sales, Profit, and Number of Orders change over time by year?
-2. How do Sales, Profit, and Number of Orders change over time by month?
+1. How do Sales, Profit, and Quantity change over time by year?
+2. How do Sales, Profit, and Quantity change over time by month?
 3. What is the worst-performing sales month for each year?
 4. What is the best-performing sales month for each year?
 
 ### Customer Segment Analysis
 
-5. Which customer segment generates the highest Sales, Profit, and Orders?
+5. Which customer segment generates the highest Sales, Profit, and Quantity?
 6. How does Profit Margin change across customer segments over time?
 7. Are Sales and Profit increasing at the same rate as Profit Margin?
 
@@ -54,20 +54,19 @@ The project uses a star schema consisting of:
 14. Does high demand necessarily result in higher Sales and Profit?
 15. Which products are driving the performance of high-performing sub-categories?
 
-## Initial Findings
+## Findings
 
 ### Sales Performance
 
-- Sales, Profit, and Number of Orders increased over the years.
-- Monthly analysis was performed to understand sales performance throughout the year.
+- Sales, Profit, and Quantity increased over the years.
 - February was identified as the worst-performing sales month across the years analyzed.
 - December was identified as the best-performing sales month across the years analyzed.
+- Sales and Quantity increased over time, while Profit did not increase at the same rate.
 
 ### Customer Segment
 
-- Consumer generated the highest overall Sales, Profit, and Orders.
+- Consumer generated the highest overall Sales, Profit, and Quantity.
 - Corporate Sales, Quantity, and Profit increased over time, but its Profit Margin declined.
-- Corporate profitability was investigated further through Category → Sub-Category → Product analysis.
 - Corporate Technology → Machines showed a sharp decline in Profit Margin in 2014 despite increases in Sales and Quantity.
 - Several Machine products generated negative profit margins in 2014.
 
@@ -75,20 +74,23 @@ The project uses a star schema consisting of:
 
 - Technology generated the highest Sales and Profit.
 - Office Supplies had the highest Quantity.
-- The category with the highest sales volume was not necessarily the category with the highest financial performance.
+- Technology generated higher Sales despite having lower Quantity than Office Supplies.
 
 ### Sub-Category Performance
 
-**Office Supplies**
+#### Office Supplies
+
 - Storage had the highest Sales.
 - Appliances generated the highest Profit.
 - Binders had the highest Quantity.
 
-**Technology**
+#### Technology
+
 - Phones had the highest Sales and Quantity.
 - Accessories generated the highest Profit.
 
-**Furniture**
+#### Furniture
+
 - Chairs had the highest Quantity.
 - Bookcases generated the highest Profit.
 - Tables generated approximately $757K in Sales but a loss of approximately $64K.
@@ -99,31 +101,50 @@ The project uses a star schema consisting of:
 - North generated the highest overall Sales, Quantity, and Profit among the regions analyzed.
 - Within North, the United Kingdom and Mexico were major contributors to Sales and Profit.
 - In the United Kingdom, Technology generated high Profit despite relatively low Quantity.
-- Within UK Technology, Copiers generated the highest Profit with relatively low Quantity and the lowest Average Discount among the Technology sub-categories.
+- Within UK Technology, Copiers generated the highest Profit with relatively low Quantity.
 - In Mexico, Office Supplies had the highest Quantity, while Technology generated the highest Sales and Profit.
 - Within Mexico Office Supplies, Binders had the highest Quantity, while Appliances generated the highest Sales and Profit despite much lower Quantity.
 - Appliances generated approximately $168 Sales per Unit compared with approximately $12 for Binders.
 - No recorded discount was observed across the Mexico Office Supplies sub-categories in this analysis.
-- Product-level analysis was performed on 25 Appliance products in Mexico to investigate the drivers of performance.
+- Product-level analysis was performed on 25 Appliance products in Mexico.
+- The top 5 Appliance products generated approximately 38% of total Appliance profit, while the remaining products contributed approximately 62%.
 
 ## SQL Analysis
 
 The analysis includes:
 
-- Aggregating Sales, Profit, Quantity, and Orders by Year and Month
-- Counting distinct orders using `COUNT(DISTINCT Order_ID)`
-- Joining `Fact_Orders` with `DimDate`
-- Joining fact and dimension tables for drill-down analysis
+- Aggregating Sales, Profit, and Quantity by Year and Month
+- Joining FactOrders with DimDate
+- Joining FactOrders with DimProduct
+- Joining FactOrders with DimLocation
 - Calculating Profit Margin
 - Calculating Sales per Unit
 - Using `RANK()` with `PARTITION BY`
-- Using multiple ranking calculations to compare Quantity and Profit
-- Using CTEs to filter and analyze intermediate results
-- Comparing performance across Customer Segments, Categories, Sub-Categories, Countries, and Regions
+- Using CTEs
+- Comparing Customer Segments
+- Comparing Categories and Sub-Categories
+- Comparing Regions and Countries
 - Drilling down from Region → Country → Category → Sub-Category → Product
 
 ## Power BI Dashboard
-- Overview of Sales,Profit,and Quantity by year, category and region
+
+### Overview
+
+The Overview page currently includes:
+
+- Total Sales
+- Total Profit
+- Total Quantity
+- Total Products
+- Profit Margin
+- Year filter
+- Month filter
+- Category filter
+- Region filter
+- Sales, Profit, and Quantity over time
+- Sales and Profit by Category
+- Quantity by Category
+- Sales by Region
 
 ## Current Progress
 
@@ -144,7 +165,10 @@ The analysis includes:
 - [x] Regional analysis
 - [x] Country-level analysis
 - [x] Country → Category → Sub-Category drill-down
-- [ ] Power BI dashboard
+- [x] Power BI data model
+- [x] Power BI Overview page
+- [ ] Product Analysis dashboard
+- [ ] Location Analysis dashboard
 - [ ] Final insights and recommendations
 
 ## Project Status
