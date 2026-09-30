@@ -2,12 +2,9 @@
 
 ## Project Overview
 
-This project analyzes retail sales data to understand sales,
-profitability, customer segments, product performance, regional
-performance, and trends over time.
+This project analyzes retail sales data to understand sales, profitability, customer segments, product performance, regional performance, and trends over time.
 
-The goal is to answer business questions using SQL, Power Query,
-Excel, and Power BI and turn the analysis into meaningful business insights.
+The goal is to answer business questions using SQL, Power Query, Excel, and Power BI and turn the analysis into meaningful business insights.
 
 ## Tools
 
@@ -87,7 +84,16 @@ The project uses a star schema consisting of:
 #### Technology
 
 - Phones had the highest Sales and Quantity.
-- Accessories generated the highest Profit.
+- Accessories generated the highest overall Profit.
+- Copiers showed a consistent upward trend in Sales, Profit, and Quantity over the years.
+- Phones continued to have the highest Sales, but their profitability did not follow the same pattern.
+- In 2013, Phone Sales and Quantity continued to increase, while Profit and Profit Margin declined.
+- Phone Quantity increased to approximately 3.1K in 2013.
+- Average Discount for Phones reached its highest level in 2013.
+- Negative-profit Phone products had an average discount of approximately 22%, compared with approximately 13% for profitable Phone products.
+- Profitable Phone products generated approximately $60.3K in profit with a 17.57% profit margin.
+- Negative-profit Phone products generated approximately -$13.35K in profit with a -12.07% profit margin.
+- The comparison shows an association between higher discount levels and lower profitability among Phone products. Further investigation is required before drawing a causal conclusion.
 
 #### Furniture
 
@@ -125,6 +131,8 @@ The analysis includes:
 - Comparing Categories and Sub-Categories
 - Comparing Regions and Countries
 - Drilling down from Region → Country → Category → Sub-Category → Product
+- Comparing profitable and negative-profit products
+- Investigating the relationship between Discount and Profitability
 
 ## Power BI Dashboard
 
@@ -145,6 +153,30 @@ The Overview page currently includes:
 - Sales and Profit by Category
 - Quantity by Category
 - Sales by Region
+
+### Product Analysis
+
+The Product Analysis page is currently being developed and includes:
+
+- Total Sales
+- Total Profit
+- Total Quantity
+- Total Products
+- Profit Margin
+- Sales by Sub-Category over time
+- Profit by Sub-Category over time
+- Quantity by Sub-Category over time
+- Profit Margin by Sub-Category over time
+- Average Discount by Sub-Category over time
+- Product-level matrix containing:
+  - Product Name
+  - Sales
+  - Quantity
+  - Profit
+  - Profit Margin
+  - Average Discount
+
+The Product Analysis page is being used to drill down from Category → Sub-Category → Product and investigate profitability issues.
 
 ## Current Progress
 
@@ -167,6 +199,9 @@ The Overview page currently includes:
 - [x] Country → Category → Sub-Category drill-down
 - [x] Power BI data model
 - [x] Power BI Overview page
+- [x] Technology sub-category analysis
+- [x] Phone profitability analysis
+- [x] Profitable vs negative-profit product comparison
 - [ ] Product Analysis dashboard
 - [ ] Location Analysis dashboard
 - [ ] Final insights and recommendations
