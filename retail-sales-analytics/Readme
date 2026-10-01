@@ -2,9 +2,11 @@
 
 ## Project Overview
 
-This project analyzes retail sales data to understand sales, profitability, customer segments, product performance, regional performance, and trends over time.
+This project analyzes retail sales data to understand sales, profitability,
+customer segments, product performance, regional performance, and trends over time.
 
-The goal is to answer business questions using SQL, Power Query, Excel, and Power BI and turn the analysis into meaningful business insights.
+The goal is to answer business questions using SQL, Power Query, Excel,
+and Power BI and turn the analysis into meaningful business insights.
 
 ## Tools
 
@@ -85,22 +87,26 @@ The project uses a star schema consisting of:
 
 - Phones had the highest Sales and Quantity.
 - Accessories generated the highest overall Profit.
-- Copiers showed a consistent upward trend in Sales, Profit, and Quantity over the years.
-- Phones continued to have the highest Sales, but their profitability did not follow the same pattern.
-- In 2013, Phone Sales and Quantity continued to increase, while Profit and Profit Margin declined.
+- Copiers showed a consistent increase in Sales, Quantity, and Profit over the years.
+- Phones generated the highest Sales within Technology, but their profitability did not follow the same pattern.
+- In 2013, Phone Sales and Quantity increased while Profit and Profit Margin declined.
 - Phone Quantity increased to approximately 3.1K in 2013.
 - Average Discount for Phones reached its highest level in 2013.
 - Negative-profit Phone products had an average discount of approximately 22%, compared with approximately 13% for profitable Phone products.
-- Profitable Phone products generated approximately $60.3K in profit with a 17.57% profit margin.
-- Negative-profit Phone products generated approximately -$13.35K in profit with a -12.07% profit margin.
-- The comparison shows an association between higher discount levels and lower profitability among Phone products. Further investigation is required before drawing a causal conclusion.
+- Profitable Phone products generated approximately $60.3K in profit with a 17.57% Profit Margin.
+- Negative-profit Phone products generated approximately -$13.35K in profit with a -12.07% Profit Margin.
+- The comparison indicates an association between higher discount levels and lower profitability among Phone products.
 
 #### Furniture
 
 - Chairs had the highest Quantity.
 - Bookcases generated the highest Profit.
-- Tables generated approximately $757K in Sales but a loss of approximately $64K.
-- Tables remained unprofitable despite increasing Sales and Quantity over time.
+- Tables generated substantial Sales but remained unprofitable.
+- Tables showed increasing Sales and Quantity while Profit declined over time.
+- Tables had a relatively high Average Discount compared with other Furniture sub-categories.
+- Product-level analysis showed multiple Table products with substantial losses.
+- Several high-loss Table products also had high discount levels.
+- The relationship between discount and profitability for all Table products is being investigated further.
 
 ### Regional & Country Analysis
 
@@ -114,6 +120,31 @@ The project uses a star schema consisting of:
 - No recorded discount was observed across the Mexico Office Supplies sub-categories in this analysis.
 - Product-level analysis was performed on 25 Appliance products in Mexico.
 - The top 5 Appliance products generated approximately 38% of total Appliance profit, while the remaining products contributed approximately 62%.
+
+## Hypothesis & Investigation
+
+The project also uses a hypothesis-driven approach when unusual patterns
+are identified.
+
+### Example: Table Profitability
+
+Observation:
+
+- Tables show increasing Sales and Quantity but negative profitability.
+
+Hypothesis:
+
+> Higher discount levels may be associated with lower Profit Margin
+> among Table products.
+
+Investigation:
+
+- Compare Average Discount with Profit Margin at the product level.
+- Use scatter plots to examine the relationship.
+- Drill down into individual products with substantial losses.
+
+The hypothesis is not treated as a confirmed conclusion until it is
+validated using the complete Table product population.
 
 ## SQL Analysis
 
@@ -138,7 +169,7 @@ The analysis includes:
 
 ### Overview
 
-The Overview page currently includes:
+The Overview page includes:
 
 - Total Sales
 - Total Profit
@@ -156,7 +187,7 @@ The Overview page currently includes:
 
 ### Product Analysis
 
-The Product Analysis page is currently being developed and includes:
+The Product Analysis page includes:
 
 - Total Sales
 - Total Profit
@@ -168,7 +199,7 @@ The Product Analysis page is currently being developed and includes:
 - Quantity by Sub-Category over time
 - Profit Margin by Sub-Category over time
 - Average Discount by Sub-Category over time
-- Product-level matrix containing:
+- Product-level analysis containing:
   - Product Name
   - Sales
   - Quantity
@@ -176,7 +207,11 @@ The Product Analysis page is currently being developed and includes:
   - Profit Margin
   - Average Discount
 
-The Product Analysis page is being used to drill down from Category → Sub-Category → Product and investigate profitability issues.
+The Product Analysis page is used to drill down from:
+
+Category → Sub-Category → Product
+
+and investigate unusual profitability patterns.
 
 ## Current Progress
 
@@ -202,6 +237,9 @@ The Product Analysis page is being used to drill down from Category → Sub-Cate
 - [x] Technology sub-category analysis
 - [x] Phone profitability analysis
 - [x] Profitable vs negative-profit product comparison
+- [x] Furniture → Tables investigation
+- [x] Hypothesis-driven analysis
+- [ ] Validate Table discount-profit relationship using all Table products
 - [ ] Product Analysis dashboard
 - [ ] Location Analysis dashboard
 - [ ] Final insights and recommendations
